@@ -1,0 +1,45 @@
+h1,h2,h3{
+    margin: 2rem;
+    color: bisque;
+}
+.p-intro{
+    color: bisque;
+}
+.bg{
+    background-image: url(img/2735421.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*CARDS*/
+.card{
+    background-color:burlywood;
+    border: inset darkorange 10px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center
+}
+.card-img-top{
+    border: solid;
+    background-color: white;
+}
+#acciones{
+    padding: 2rem;
+}
+.texto-rojo{
+    color: rgb(157, 21, 21);
+}
+.btn{
+    background-color: darkolivegreen;
+    color: black;
+    border: inset orange 4px;
+    width: 8rem;
+    font-weight: bold;
+    
+}
+.btn:hover{
+    background-color: black;
+    border: inset darkolivegreen 4px;
+}
