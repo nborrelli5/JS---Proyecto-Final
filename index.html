@@ -5,60 +5,189 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <!-- Css -->
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400&display=swap" rel="stylesheet">    <!-- Css -->
+    <!-- Sweetalert -->
+        <!-- Sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="styles.css">
 
     <title>Document</title>
 </head>
 
-<body class="bg">
-
-    <h1 class="text-center">¡Bienvenido a Solo Survivor!</h1>
-    <h2 class="text-center">Un simulador de supervivencia</h2>
-    <p class="text-center p-intro">Comienzas el juego en una cueva con la energía y el estómago lleno, pero eso cambia con cada incursión que hagas.
-    <br> Usa tu energía a cambio de comida,agua y madera, luego duerme para recuperarte.</p>   
-    <h3 class="m-4">Menú principal</h3>
-
-    <div class="container text-center mx-auto row">
-        <div class="card p-2 m-3 col" style="width: 20rem">
-            <img src="img/estado.png" class="card-img-top rounded mx-auto d-block img-fluid " style="height: 200px; width:250px"  alt="estado">
-            <div class="card-body">
-            <h5 class="card-title">Estado</h5>
-            <p class="card-text">Consultar el estado del personaje</p>
-            <a  id="estado" class="btn btn-primary">Ver</a>
+<body>
+    <main>
+<!-- Banner -->
+        <div class="banner">    
+            <div class="divisor1">
             </div>
-        </div>
-        <div class="card p-2 m-3 col" style="width: 20rem;">
-            <img src="img/mochila.jpg" class="card-img-top rounded mx-auto d-block img-fluid " style="height: 200px; width:250px" alt="mochila">
-            <div class="card-body">
-            <h5 class="card-title">Mochila</h5>
-            <p class="card-text">Consultar materiales Recolectados</p>
-            <a id="mochila" class="btn btn-primary">Ver</a>
+            <h2 class="text-center pt-4 pb-0">Bienvenido a</h2>
+            <h1 class="text-center pt-0  p-4">Coder Survivor</h1>
+            <h2 class="text-center pb-4">Un simulador de supervivencia</h2>
+            <div class="divisor2">
             </div>
-        </div>
-        <div class="card p-2 m-3 col" style="width: 20rem;">
-            <img src="img/bosque.jpg" class="card-img-top rounded mx-auto d-block img-fluid " style="height: 200px; width:250px"  alt="incursion">
-            <div class="card-body">
-            <h5 class="card-title">Incursión</h5>
-            <p class="card-text">Adentrarse en el bosque para buscar alimento, agua y leña.
-            <br><strong class="texto-rojo">Costo: 20 Energía</strong>
-            <a id="incursion" class="btn btn-primary">Comenzar</a>
+            <section class="m-5 mb-0">
+                <h3 class="p-2">Intro</h3>
+                <p class="text-justify p-intro p-1">Eres un programador perdido en el bosque en pleno invierno, lo bueno, es que has jugado suficientes videojuegos de supervivencia para entender como funciona ¿Qué podría salir mal? </p>
+                <h3 class="p-2">Instrucciones</h3>
+                <ul class="mb-0">
+                    <li>Tienes 4 <i>ESTADOS</i>:</li>
+                        <ul>
+                            <li>HAMBRE</li>
+                            <li>SED</li>
+                            <li>FRÍO</li>
+                            <li>ENERGÍA</li>
+                        </ul>                        
+                    <li>Debes buscar recursos para sobrevivir como COMIDA, AGUA y MADERA mediante INCURSIONES.</li>
+                    <li>Cada Incursión que hagas va a consumir un poco de tus ESTADOS, sobre todo ENERGIA.</li>
+                    <li>Puedes Dormir para recuperar ENERGIA, pero te restará parte de tus otras ESTADOS.</li>
+                    <li>Comienzas con 2 unidades de COMIDA y 1 unidad de AGUA de refuerzo.</li>
+                    <li>Si alguno de tus ESTADOS llega a cero ¡Pierdes!</li>
+                </ul>
+            </section>
+            <div class="divisor3">
+            </div>    
+        </div>  
+        <div class="bg">
+        <!-- Offcanvas ESTADISTICAS -->
+            <button class="btn btn-primary btn-estadisticas"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            </button>
+            <div class="offcanvas offcanvas-top px-5 py-1" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasTopLabel">Estadísticas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <ul class="nav col-12 col-lg-auto my-2 justify-content-between my-md-0 text-small">
+                            <li class="iconos">
+                                <p class="m-1">Hambre</p>
+                                <a>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="seagreen" class="bi bi-apple img-fluid" viewBox="0 0 16 16">
+                                        <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+                                    </svg>
+                                </a>
+                                <p id="hambre">
+                                    100
+                                </p>
+                            </li>
+                            <li class="iconos">
+                                <p class="m-1">Sed</p>
+                                <a href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="cornflowerblue" class="bi bi-droplet-fill" viewBox="0 0 16 16">
+                                        <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6M6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13Z"/>
+                                    </svg>
+                                </a>
+                                <p id="sed">
+                                    100
+                                </p>
+                            </li>
+                            <li class="iconos">
+                                <p class="m-1">Frío</p>
+                                <a href="">    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="aliceblue" class="bi bi-thermometer-snow" viewBox="0 0 16 16">
+                                    <path d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1m5 1a.5.5 0 0 1 .5.5v1.293l.646-.647a.5.5 0 0 1 .708.708L9 5.207v1.927l1.669-.963.495-1.85a.5.5 0 1 1 .966.26l-.237.882 1.12-.646a.5.5 0 0 1 .5.866l-1.12.646.884.237a.5.5 0 1 1-.26.966l-1.848-.495L9.5 8l1.669.963 1.849-.495a.5.5 0 1 1 .258.966l-.883.237 1.12.646a.5.5 0 0 1-.5.866l-1.12-.646.237.883a.5.5 0 1 1-.966.258L10.67 9.83 9 8.866v1.927l1.354 1.353a.5.5 0 0 1-.708.708L9 12.207V13.5a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5"/>
+                                    </svg>
+                                </a>
+                                <p id="frio">
+                                    100
+                                </p>
+                            </li>
+                            <li class="iconos">
+                                <p class="m-1">Energía</p>
+                                <a href="">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="goldenrod" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+                                        <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                                    </svg>
+                                </a>
+                                <p id="energia">
+                                    100
+                                </p>
+                            </li>
+
+                        </ul>        
+                    </div>        
+                </div>
             </div>
-        </div>
-        <!-- acciones -->
-        <div class="card p-2 m-3 col" style="width: 20rem;">
-            <img src="img/acciones.png" id="acciones" class="card-img-top rounded mx-auto d-block img-fluid " style="height: 200px; width:250px" alt="mochila">
-            <div class="card-body">
-            <h5 class="card-title">Acciones</h5>
-            <p class="card-text">Comer, beber, alimentar el fuego o dormir</p>
-            <a href="pages/acciones.html" class="btn btn-primary">Ver acciones</a>
+            <!-- Offcanvas MOCHILA -->
+            <button class="btn btn-primary btn-mochila" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            </button>        
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header p-0">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Mochila</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul>
+                        <li class="mochila">
+                            <p id="comida" class="m-0 mx-auto"><strong>0</strong></p>
+                            <p class="m-0 mx-auto"><strong>Comida</strong></p>
+                            <img src="img/meat_icon.png" class="m-0 mx-auto" width="50" height="50" alt="comer">
+                        </li>
+                        <li class="mochila">
+                            <p id="agua" class="m-0 mx-auto"><strong>0</strong></p>
+                            <p class="m-0 mx-auto"><strong>Agua</strong></p>
+                            <img src="img/agua.png" class="m-0 mx-auto" width="50" height="50" alt="comer">
+                        </li>
+                        <li class="mochila">
+                            <p id="madera" class="m-0 mx-auto"><strong>0</strong></p>
+                            <p class="m-0 mx-auto"><strong>Madera</strong></p>
+                            <img src="img/madera_icon.png" class="m-0 mx-auto" width="50" height="50" alt="comer">
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
 
 
+            
+<!-- MENU PRINCIPAL -->
+            <section class="acciones p-5">
+                <h3 class="">Acciones de búsqueda</h3>
+                <div class="d-flex">
+                    <button id="incursion"class="btn btn-primary btn-acciones" type="button">
+                        Incursión
+                    </button>
+                </div>             
 
-    <script src="index.js"></script>
+                <h3 class="">Acciones de recuperación</h3>
+<!-- COMER -->
+                <div class="d-flex">
+                    <button id="comer" class="btn btn-primary btn-acciones" type="button">
+                        Comer
+                    </button>
+                </div>
+<!-- BEBER -->
+                <div class="d-flex">
+                    <button id="beber" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beber" aria-expanded="false" aria-controls="collapseWidthExample">
+                        Beber
+                    </button>
+                </div>
+<!-- FUEGO -->
+                <div class="d-flex">
+                    <button id="fuego" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-fuego" aria-expanded="false" aria-controls="collapseWidthExample">
+                        Hacer Fuego
+                    </button>
+                </div>
+<!-- DORMIR -->
+                <div class="d-flex">
+                    <button id="dormir" class="btn btn-primary btn-acciones" type="button">
+                        Dormir
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- archivo JS -->
+    <script src="app.js">
+    </script>
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </script>
 </body>
 </html>
+

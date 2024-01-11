@@ -1,45 +1,230 @@
-h1,h2,h3{
-    margin: 2rem;
-    color: bisque;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.p-intro{
-    color: bisque;
+html { /* etiqueta raíz */
+    font-size: 62.5%;
+    scroll-snap-type: y mandatory;
+
+}
+ul{
+    list-style: none;
+}
+body{
+    background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
+}
+  /* BANNER  */
+.banner{
+    background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:auto ;
+    scroll-snap-align: start;
+
+}
+.banner ul{
+    list-style: circle;
+    color: goldenrod;
+    font-family: 'Londrina Solid', sans-serif;
+    -webkit-text-stroke: 0.65px #000000df;
+    font-size: 1.35rem;
+}
+.divisor1,.divisor2,.divisor3{
+    height: 20px;
+    background-image: url(img/divisor.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 4;
+}
+.divisor2{
+    top: 150px;
+    right: 25%;
+    width: 50%;
+}
+.divisor3{
+    position: relative;
+    background-position:bottom;    
 }
 .bg{
-    background-image: url(img/2735421.jpg);
+    background-image: url(img/cave7.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
+    height: auto ;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    scroll-snap-align: start;
+    scroll-snap-stop:always ;
 }
-/*CARDS*/
-.card{
-    background-color:burlywood;
-    border: inset darkorange 10px;
+.banner h1,h2,h3{
+    color: goldenrod;
+    font-family: 'Londrina Solid', sans-serif;
+    -webkit-text-stroke: 1px #000000;
 }
-.card-body{
+h1{
+    font-size: 4rem;
+}
+h2{
+    font-size: 2rem;
+}
+h3{
+    font-size: 1.75rem;
+}
+.p-intro{
+    font-size: 1.75rem;
+    color: goldenrod;
+    font-family: 'Londrina Solid', sans-serif;
+    -webkit-text-stroke: 1px #000000;
+}
+/* ESTADISTICAS */
+.offcanvas.offcanvas-top{
+    color: bisque;
+    background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
+    border-bottom: inset darkorange 2px;
+}
+.offcanvas-body{
+    overflow: hidden;
+    padding: 0;
+
+}
+.estadisticas p, h5, img {
+    font-size: 1.5rem;
+}
+.iconos{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center
+    align-items: center;
+    margin-inline: 1rem;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
-.card-img-top{
-    border: solid;
-    background-color: white;
+.offcanvas-header{
+    padding: 0;
 }
-#acciones{
+/* MOCHILA */
+.btn-mochila,.btn-estadisticas{
+    position: fixed;
+    right: 30px;
+    bottom: 50%;
+    background-image: url(img/estadisticas.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+    background-color: rgba(69, 19, 19, 0.9)!important;
+    height: 5rem;
+    width: 5rem;
+    z-index: 5;
+    border: inset darkorange 4px;
+}
+.btn-mochila{
+    bottom: 35%;
+    background-image: url(img/mochila.png);
+}
+.mochila{
+    display: flex;
+    margin: 3rem !important;
+    justify-content: center;
+    align-items: center;
+}
+.offcanvas.offcanvas-end{
+    width: 35%;
+    color: bisque;
+    background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
+    border-left: inset darkorange 2px;
+}
+.mochila p {
+    font-size: 1.25rem;
+
+}
+/*BOTONES*/
+.btn-acciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(27, 36, 160, 0.906) 1%, #050403 100%);
+    color: goldenrod;
+    border: inset darkorange 2px;
+    font-weight: bold;
+    height: 4rem;
+    width: 6rem;
     padding: 2rem;
+}
+.btn:hover{
+    border: inset darkorange 2.5px;
+}
+.btn_adicional{
+    display: flex;
+    justify-content: space-around;
+}
+
+/* SWEETALERT2 */
+.swal-container{
+    background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
+    /* background: radial-gradient(circle, rgba(12, 16, 71, 0.906) 1%, #050403 100%); */
+    border: inset goldenrod 3px;
+}
+.swal-titulo{
+    color: goldenrod;
+    -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.5);
+}
+.swal-confirm, .swal-deny{
+    margin:0 2rem;
+    padding: 1rem;    
+    background: radial-gradient(circle, rgba(12, 16, 71, 0.906) 1%, #050403 100%);
+    border: inset goldenrod 2px;
+    color: goldenrod;
+    font-family: 'Londrina Solid', sans-serif;
+}
+.swal-confirm:hover{
+    color: greenyellow;
+}
+.swal-deny:hover{
+    color: red;
+}
+/*CARDS ACCIONES*/
+.d-flex{
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.descripcion-acciones{
+    margin: auto
+}
+.card{
+    background: radial-gradient(circle, rgba(27, 36, 160, 0.55) 1%, #050403 100%);
+    color: goldenrod;
+    border: inset darkorange 2px;
+    text-align: center;
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    width: 250px;
+    height: 225px;
+}
+.card.h5{
+    font-weight: 400;
 }
 .texto-rojo{
     color: rgb(157, 21, 21);
+    display: block;
+} 
+.texto-verde{
+    color: greenyellow;
+    display: block;
+} 
+.card-body{
+    position: absolute;
 }
-.btn{
-    background-color: darkolivegreen;
-    color: black;
-    border: inset orange 4px;
-    width: 8rem;
-    font-weight: bold;
-    
+
+/* RESPONSIVE */
+@media (max-width: 576px){
+    .mochila p, h5, img{
+        font-size: 1rem;
+        margin-right: 1rem!important;
+    }   
 }
-.btn:hover{
-    background-color: black;
-    border: inset darkolivegreen 4px;
-}
+
