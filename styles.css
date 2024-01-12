@@ -150,7 +150,7 @@ h3{
     border: inset darkorange 2px;
     font-weight: bold;
     height: 4rem;
-    width: 6rem;
+    width: 20%;
     padding: 2rem;
 }
 .btn:hover{
@@ -159,6 +159,10 @@ h3{
 .btn_adicional{
     display: flex;
     justify-content: space-around;
+}
+#reiniciar{
+    width: 5%;
+    background: radial-gradient(circle, rgba(66, 67, 71, 0.906) 50%, #fb80066c 100%);
 }
 
 /* SWEETALERT2 */
@@ -194,7 +198,7 @@ h3{
 .descripcion-acciones{
     margin: auto
 }
-.card{
+/* .card{
     background: radial-gradient(circle, rgba(27, 36, 160, 0.55) 1%, #050403 100%);
     color: goldenrod;
     border: inset darkorange 2px;
@@ -204,10 +208,10 @@ h3{
     align-items: center;
     width: 250px;
     height: 225px;
-}
-.card.h5{
+} */
+/* .card.h5{
     font-weight: 400;
-}
+} */
 .texto-rojo{
     color: rgb(157, 21, 21);
     display: block;
@@ -216,9 +220,9 @@ h3{
     color: greenyellow;
     display: block;
 } 
-.card-body{
+/* .card-body{
     position: absolute;
-}
+} */
 
 /* RESPONSIVE */
 @media (max-width: 576px){

@@ -1,19 +1,20 @@
-//OBJECT estado del personaje
+//OBJECT estado del personaje.
 const estado = {"hambre":100,"sed":100,"frio":100,"energia":100};
 let comida;
 let agua;
 let madera;
-//ARRAY items recolectados
+//ARRAY items recolectados.
 const recolectados=[{"item":"comida","cantidad":2,"posibilidad de encontrar":35}, 
                     {"item":"agua","cantidad":1,"posibilidad de encontrar":40},
-                    {"item":"madera","cantidad":1,"posibilidad de encontrar":50}]
-document.getElementById('comida').innerHTML = recolectados[0].cantidad;
+                    {"item":"madera","cantidad":1,"posibilidad de encontrar":50}
+]
+document.getElementById('comida').innerHTML = recolectados[0].cantidad; //Actualiza cantidades en html de la 'Mochila'
 document.getElementById('agua').innerHTML = recolectados[1].cantidad;          
 document.getElementById('madera').innerHTML = recolectados[2].cantidad;           
 
-//FUNCION cálculo posibilidad de encontrar objetos
+//FUNCION cálculo posibilidad de encontrar objetos.
 const aleatorio = porcentaje =>  (Math.floor(Math.random()*100)<porcentaje);
-//FUNCION derrota si un estado llega a cero
+//FUNCION derrota si un estado llega a cero.
 function derrota(estadoEnCero) {
     if (estadoEnCero<= 0) {
         Swal.fire({
@@ -28,31 +29,37 @@ function derrota(estadoEnCero) {
             }
         })
     }
-}
-// let btnReiniciar=document.getElementById("reiniciar");
+};
+let btnReiniciar=document.getElementById("reiniciar");
 let btnIncursion=document.getElementById("incursion");
 let btnComer=document.getElementById("comer");
 let btnBeber=document.getElementById("beber");
 let btnFuego=document.getElementById("fuego");
 let btnDormir=document.getElementById("dormir");
 
+// INCURSION
 btnIncursion.onclick = () => {
-    let incursion = [];
-    let comidaP;
+    let incursion = []; //Array para agrupar items conseguidos durante la incursión, luego se vacía.
+    let comidaP; //Variables para los cálculos de Porcentaje.
     let aguaP;
     let maderaP;
-    if (comidaP = (aleatorio(35))) {                
+    if (comidaP = (aleatorio(recolectados[0]["posibilidad de encontrar"]))) { //Si el valor de 'aleatorio' supera el valor de 'posibilidad de encontrar' lo suma a 'Incursión' y suma en 1 el item en la 'mochila'.            
         incursion.push("Comida")
         recolectados[0].cantidad ++
-        document.getElementById('comida').innerHTML = recolectados[0].cantidad;
-    }if (aguaP = (aleatorio(40))) {                
+        document.getElementById('comida').innerHTML = recolectados[0].cantidad
+        localStorage.setItem('Comida',recolectados[0].cantidad);
+
+    }if (aguaP = (aleatorio(recolectados[1]["posibilidad de encontrar"]))) {                
         incursion.push("Agua")
         recolectados[1].cantidad ++
-        document.getElementById('agua').innerHTML = recolectados[1].cantidad;
-    }if (maderaP = (aleatorio(50))) {                
+        document.getElementById('agua').innerHTML = recolectados[1].cantidad
+        localStorage.setItem('Comida',recolectados[1].cantidad);
+
+    }if (maderaP = (aleatorio(recolectados[2]["posibilidad de encontrar"]))) {                
         incursion.push("Madera")
         recolectados[2].cantidad ++
-        document.getElementById('madera').innerHTML = recolectados[2].cantidad;
+        document.getElementById('madera').innerHTML = recolectados[2].cantidad
+        localStorage.setItem('Comida',recolectados[2].cantidad);
     }
     Swal.fire({
         html:"Tras varias horas de búsqueda vuelves al refugio con el siguiente botín: <br>" + incursion, 
@@ -69,7 +76,7 @@ btnIncursion.onclick = () => {
     estado.hambre -= 15
     estado.sed -= 10
     estado.frio -= 20
-    document.getElementById('hambre').innerHTML = estado.hambre;
+    document.getElementById('hambre').innerHTML = estado.hambre; //Actualiza valores de estados en html.
     document.getElementById('sed').innerHTML = estado.sed;
     document.getElementById('frio').innerHTML = estado.frio;
     document.getElementById('energia').innerHTML = estado.energia;
@@ -78,11 +85,10 @@ btnIncursion.onclick = () => {
     derrota(estado.frio)
 };
 
-
 //ACCIONES 
 //COMER
 btnComer.onclick = () => {
-    Swal.fire({
+    Swal.fire({  // SWAL Pregunta si se quiere consumir o no.
         title:"Comer Algo",
         html: "Consume el alimento disponible en la mochila <br><strong>Recupera: +50 Hambre</strong> <br><strong class='texto-rojo my-3'>Costo: 1 Comida</strong>",
         color:"#daa520",
@@ -96,8 +102,8 @@ btnComer.onclick = () => {
                     denyButton:"swal-deny"}
     }).then((result)=>{
         if (result.isConfirmed){
-            if  ((recolectados[0].cantidad)>=1){
-                if (estado.hambre>50) {
+            if  ((recolectados[0].cantidad)>=1){ //valida que tenga alimento para consumir.
+                if (estado.hambre>50) {  //condicional para que el valor no supere '100'.
                     estado.hambre=100
                 }
                 else {estado.hambre = estado.hambre + 50}
@@ -114,7 +120,7 @@ btnComer.onclick = () => {
                     }
                 })
                 document.getElementById('hambre').innerHTML = estado.hambre;            
-            }else Swal.fire({
+            }else Swal.fire({ //SWAL si confirma pero no tiene comida en la mochila.
                 html:"No tienes nada para comer.",
                 color:"#daa520",
                 confirmButtonText: "Cerrar",
@@ -126,7 +132,7 @@ btnComer.onclick = () => {
             });
         }
     })
-}
+};
 // BEBER
 btnBeber.onclick = () => {
     Swal.fire({
@@ -173,8 +179,8 @@ btnBeber.onclick = () => {
             });
         }
     })
-}
-// // FUEGO
+};
+// FUEGO
 btnFuego.onclick = () => {
     Swal.fire({
         title:"Alimentar la fogata",
@@ -220,8 +226,8 @@ btnFuego.onclick = () => {
             });
         }
     })
-}
-// //Dormir
+};
+//Dormir
 btnDormir.onclick = () => {
     Swal.fire({
         title:"Echarse a dormir",
@@ -260,22 +266,62 @@ btnDormir.onclick = () => {
             })               
         }
     })
-}
+};
+btnReiniciar.onclick = () => {
+    estado.hambre=100;
+    estado.sed=100;
+    estado.frio=100;
+    estado.energia=100;
+    localStorage.setItem('hambre',estado.hambre);
+    localStorage.setItem('sed',estado.sed);
+    localStorage.setItem('frio',estado.frio);
+    localStorage.setItem('energia',estado.energia);
+    document.getElementById('hambre').innerHTML = 100;
+    document.getElementById('sed').innerHTML = 100;
+    document.getElementById('frio').innerHTML = 100;
+    document.getElementById('energia').innerHTML = 100;
+    recolectados[0].cantidad=2;
+    recolectados[1].cantidad=1;
+    recolectados[2].cantidad=1;
+    localStorage.setItem('Comida',estado.hambre);
+    localStorage.setItem('Agua',estado.sed);
+    localStorage.setItem('Madera',estado.frio);
+    document.getElementById('comida').innerHTML = recolectados[0].cantidad
+    document.getElementById('agua').innerHTML = recolectados[1].cantidad
+    document.getElementById('madera').innerHTML = recolectados[2].cantidad
+};
+
+
+
 // fetch('https://pokeapi.co/api/v2/pokemon/ditto')
 // .then((resp)=> resp.json())
 // .then((data)=>{
 //     console.log(data.species.name)
 // })
-const res = fetch("https://es.libretranslate.com/translate", {
-	method: "POST",
-	body: JSON.stringify({
-		q: "hola",
-		source: "auto",
-		target: "en",
-		format: "text",
-		api_key: ""
-	}),
-	headers: { "Content-Type": "application/json" }
-});
+// Async function traduccion () {
+const url = 'https://text-translator2.p.rapidapi.com/translate';
+const options = {
+	method: 'POST',
+	headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': '16591e9cecmsh9d0a2638bd27c26p10452fjsn48daf2cf0b43',
+		'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+	},
+	body: new URLSearchParams({
+		source_language: 'es',
+		target_language: 'en',
+		text: 'Hola Mundo'
+	})
+};
 
-console.log(res.json());
+try {
+	const response = fetch(url, options);
+	const result = response.text();
+	console.log(result);
+} catch (error) {
+	console.error(error);
+}
+// }
+
+console.log()
+// Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules

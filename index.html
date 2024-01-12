@@ -46,14 +46,14 @@
                     <li>Cada Incursión que hagas va a consumir un poco de tus ESTADOS, sobre todo ENERGIA.</li>
                     <li>Puedes Dormir para recuperar ENERGIA, pero te restará parte de tus otras ESTADOS.</li>
                     <li>Comienzas con 2 unidades de COMIDA y 1 unidad de AGUA de refuerzo.</li>
-                    <li>Si alguno de tus ESTADOS llega a cero ¡Pierdes!</li>
+                    <li id="il4">Si alguno de tus ESTADOS llega a cero ¡Pierdes!</li>
                 </ul>
             </section>
             <div class="divisor3">
             </div>    
         </div>  
         <div class="bg">
-        <!-- Offcanvas ESTADISTICAS -->
+<!-- Offcanvas ESTADISTICAS -->
             <button class="btn btn-primary btn-estadisticas"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
             </button>
             <div class="offcanvas offcanvas-top px-5 py-1" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
@@ -113,7 +113,7 @@
                     </div>        
                 </div>
             </div>
-            <!-- Offcanvas MOCHILA -->
+<!-- Offcanvas MOCHILA -->
             <button class="btn btn-primary btn-mochila" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
             </button>        
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -154,38 +154,44 @@
                 </div>             
 
                 <h3 class="">Acciones de recuperación</h3>
-<!-- COMER -->
+                <!-- COMER -->
                 <div class="d-flex">
                     <button id="comer" class="btn btn-primary btn-acciones" type="button">
                         Comer
                     </button>
                 </div>
-<!-- BEBER -->
+                <!-- BEBER -->
                 <div class="d-flex">
                     <button id="beber" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beber" aria-expanded="false" aria-controls="collapseWidthExample">
                         Beber
                     </button>
                 </div>
-<!-- FUEGO -->
+                <!-- FUEGO -->
                 <div class="d-flex">
                     <button id="fuego" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-fuego" aria-expanded="false" aria-controls="collapseWidthExample">
                         Hacer Fuego
                     </button>
                 </div>
-<!-- DORMIR -->
+                <!-- DORMIR -->
                 <div class="d-flex">
                     <button id="dormir" class="btn btn-primary btn-acciones" type="button">
                         Dormir
                     </button>
                 </div>
             </section>
+            <!-- REINICIAR -->
+            <div class="d-flex">
+                <button id="reiniciar" class="btn btn-primary btn-acciones" type="button">
+                    Reiniciar Juego
+                </button>
+            </div>
         </div>
     </main>
 
-    <!-- archivo JS -->
+<!-- archivo JS -->
     <script src="app.js">
     </script>
-    <!-- Bootstrap -->
+<!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     </script>
 </body>
