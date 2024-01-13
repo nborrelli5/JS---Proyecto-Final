@@ -14,7 +14,7 @@ let comida;
 let agua;
 let madera;
 //ARRAY items recolectados.
-const recolectados=[{"item":"comida","cantidad":(localStorage.getItem('comida')),"posibilidad de encontrar":350}, 
+const recolectados=[{"item":"comida","cantidad":(localStorage.getItem('comida')),"posibilidad de encontrar":35}, 
                     {"item":"agua","cantidad":(localStorage.getItem('agua')),"posibilidad de encontrar":40},
                     {"item":"madera","cantidad":(localStorage.getItem('madera')),"posibilidad de encontrar":50}
 ]
@@ -46,6 +46,7 @@ let btnComer=document.getElementById("comer");
 let btnBeber=document.getElementById("beber");
 let btnFuego=document.getElementById("fuego");
 let btnDormir=document.getElementById("dormir");
+let btnTraducir=document.getElementById("ingles");
 
 // INCURSION
 btnIncursion.onclick = () => {
@@ -94,7 +95,7 @@ btnIncursion.onclick = () => {
     document.getElementById('energia').innerHTML = estado.energia;
     derrota(estado.hambre);
     derrota(estado.sed);
-    derrota(estado.frio);
+    derrota(estado.frio);    
 };
 
 //ACCIONES 
@@ -286,6 +287,7 @@ btnDormir.onclick = () => {
         }
     })
 };
+//Botón para reiniciar todos los objetos y estadísticas del juego
 btnReiniciar.onclick = () => {
     estado.hambre=100;
     estado.sed=100;
@@ -310,30 +312,49 @@ btnReiniciar.onclick = () => {
     document.getElementById('madera').innerHTML = recolectados[2].cantidad
 };
 
-async function traducir () {
-    const url = 'https://text-translator2.p.rapidapi.com/translate';
-    const options = {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'X-RapidAPI-Key': '16591e9cecmsh9d0a2638bd27c26p10452fjsn48daf2cf0b43',
-            'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
-        },
-        body: new URLSearchParams({
-            source_language: 'es',
-            target_language: 'en',
-            text: 'simulador'
-        })
-    };
+// Función con iteración para seleccionar todos los párrafos de texto a traducir
+// const fromText = document.getElementsByClassName('tl');
+// for (let i=0; i<fromText.length;i++){
+//     console.log(fromText[i].innerHTML)
+// };
 
-    try {
+// Variable del body para POST request 
+// let body = new URLSearchParams ({
+//             source_language: 'es',
+//             target_language: 'en',
+//             text: fromText});
+
+// Array para completar los innerHTML con la devolución de la traducción.
+const pTraducido = document.getElementsByClassName('tl');
+
+
+// API de Traducción
+btnTraducir.onclick = () => {
+    async function traducir () {
+        const url = 'https://text-translator2.p.rapidapi.com/translate';
+        const options = {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'X-RapidAPI-Key': '16591e9cecmsh9d0a2638bd27c26p10452fjsn48daf2cf0b43',
+                'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+            },
+            body:new URLSearchParams ({
+                        source_language: 'es',
+                        target_language: 'en',
+                        text:'Eres un programador perdido en el bosque en pleno invierno, lo bueno, es que has jugado suficientes videojuegos de supervivencia para entender como funciona ¿Qué podría salir mal? '
+                    })
+            }
+        try {
         const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result)
-        // const p=document.createElement('p')
-        // p.innerHTML=`123asd`
-    } catch (error) {
-        console.error(error);
+        const result = await response.json();
+        
+        //Array para completar los distintos InnerHTML (falta forEach)
+        pTraducido[2].innerHTML=result.data.translatedText
+
+        } catch (error) {
+            console.error(error);
+        }
     }
-    }
-console.log(traducir())
+    console.log(traducir())
+}

@@ -19,32 +19,35 @@
 </head>
 <body>
     <main>
+        <nav class="navbar m-0">
+            <p id="ingles">English</p>
+        </nav>
 <!-- Banner -->
         <div class="banner">    
             <div class="divisor1">
             </div>
-            <h2 class="text-center pt-4 pb-0">Bienvenido a</h2>
+            <h2 class="text-center pt-4 pb-0 tl">Bienvenido a</h2>
             <h1 class="text-center pt-0  p-4">Coder Survivor</h1>
-            <h2 id="h2" class="text-center pb-4">Un simulador de supervivencia</h2>
+            <h2 id="h2" class="text-center pb-4 tl tl2">Un simulador de supervivencia</h2>
             <div class="divisor2">
             </div>
             <section class="m-5 mb-0">
                 <h3 class="p-2">Intro</h3>
-                <p class="text-justify p-intro p-1">Eres un programador perdido en el bosque en pleno invierno, lo bueno, es que has jugado suficientes videojuegos de supervivencia para entender como funciona ¿Qué podría salir mal? </p>
-                <h3 class="p-2">Instrucciones</h3>
+                <p class="text-justify p-intro p-1 tl">Eres un programador perdido en el bosque en pleno invierno, lo bueno, es que has jugado suficientes videojuegos de supervivencia para entender como funciona ¿Qué podría salir mal? </p>
+                <h3 class="p-2 tl">Instrucciones</h3>
                 <ul class="mb-0">
-                    <li>Tienes 4 <i>ESTADOS</i>:</li>
+                    <li class="tl">Tienes 4 ESTADOS:</li>
                         <ul>
-                            <li>HAMBRE</li>
-                            <li>SED</li>
-                            <li>FRÍO</li>
-                            <li>ENERGÍA</li>
+                            <li class="tl">HAMBRE</li>
+                            <li class="tl">SED</li>
+                            <li class="tl">FRÍO</li>
+                            <li class="tl">ENERGÍA</li>
                         </ul>                        
-                    <li>Debes buscar recursos para sobrevivir como COMIDA, AGUA y MADERA mediante INCURSIONES.</li>
-                    <li>Cada Incursión que hagas va a consumir un poco de tus ESTADOS, sobre todo ENERGIA.</li>
-                    <li>Puedes Dormir para recuperar ENERGIA, pero te restará parte de tus otras ESTADOS.</li>
-                    <li>Comienzas con 2 unidades de COMIDA y 1 unidad de AGUA de refuerzo.</li>
-                    <li id="il4">Si alguno de tus ESTADOS llega a cero ¡Pierdes!</li>
+                    <li class="tl">Debes buscar recursos para sobrevivir como COMIDA, AGUA y MADERA mediante INCURSIONES.</li>
+                    <li class="tl">Cada Incursión que hagas va a consumir un poco de tus ESTADOS, sobre todo ENERGIA.</li>
+                    <li class="tl">Puedes Dormir para recuperar ENERGIA, pero te restará parte de tus otras ESTADOS.</li>
+                    <li class="tl">Comienzas con 2 unidades de COMIDA y 1 unidad de AGUA de refuerzo.</li>
+                    <li class="tl">Si alguno de tus ESTADOS llega a cero ¡Pierdes!</li>
                 </ul>
             </section>
             <div class="divisor3">
@@ -144,42 +147,42 @@
             
 <!-- MENU PRINCIPAL -->
             <section class="acciones p-5">
-                <h3 class="">Acciones de búsqueda</h3>
+                <h3 class="tl">Acciones de búsqueda</h3>
                 <div class="d-flex">
-                    <button id="incursion"class="btn btn-primary btn-acciones" type="button">
+                    <button id="incursion"class="btn btn-primary btn-acciones tl" type="button">
                         Incursión
                     </button>
                 </div>             
 
-                <h3 class="">Acciones de recuperación</h3>
+                <h3 class="tl">Acciones de recuperación</h3>
                 <!-- COMER -->
                 <div class="d-flex">
-                    <button id="comer" class="btn btn-primary btn-acciones" type="button">
+                    <button id="comer" class="btn btn-primary btn-acciones tl" type="button">
                         Comer
                     </button>
                 </div>
                 <!-- BEBER -->
                 <div class="d-flex">
-                    <button id="beber" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beber" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <button id="beber" class="btn btn-primary btn-acciones tl" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-beber" aria-expanded="false" aria-controls="collapseWidthExample">
                         Beber
                     </button>
                 </div>
                 <!-- FUEGO -->
                 <div class="d-flex">
-                    <button id="fuego" class="btn btn-primary btn-acciones" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-fuego" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <button id="fuego" class="btn btn-primary btn-acciones tl" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-fuego" aria-expanded="false" aria-controls="collapseWidthExample">
                         Hacer Fuego
                     </button>
                 </div>
                 <!-- DORMIR -->
                 <div class="d-flex">
-                    <button id="dormir" class="btn btn-primary btn-acciones" type="button">
+                    <button id="dormir" class="btn btn-primary btn-acciones tl" type="button">
                         Dormir
                     </button>
                 </div>
             </section>
             <!-- REINICIAR -->
             <div class="d-flex">
-                <button id="reiniciar" class="btn btn-primary btn-acciones" type="button">
+                <button id="reiniciar" class="btn btn-primary btn-acciones tl" type="button">
                     Reiniciar Juego
                 </button>
             </div>
