@@ -1,19 +1,29 @@
-//OBJECT estado del personaje.
-const estado = {"hambre":100,"sed":100,"frio":100,"energia":100};
+//OBJECT estado del personaje. Carga el objeto los valores almacenados en local storage.
+const estado = {"hambre":(localStorage.getItem('hambre')),
+                "sed":(localStorage.getItem('sed')),
+                "frio":(localStorage.getItem('frio')),
+                "energia":(localStorage.getItem('energia'))
+};
+//Actualiza la barra de estado en el DOM
+document.getElementById('hambre').innerHTML = estado.hambre;
+document.getElementById('sed').innerHTML = estado.sed;
+document.getElementById('frio').innerHTML = estado.frio;
+document.getElementById('energia').innerHTML = estado.energia;
+
 let comida;
 let agua;
 let madera;
 //ARRAY items recolectados.
-const recolectados=[{"item":"comida","cantidad":2,"posibilidad de encontrar":35}, 
-                    {"item":"agua","cantidad":1,"posibilidad de encontrar":40},
-                    {"item":"madera","cantidad":1,"posibilidad de encontrar":50}
+const recolectados=[{"item":"comida","cantidad":(localStorage.getItem('comida')),"posibilidad de encontrar":350}, 
+                    {"item":"agua","cantidad":(localStorage.getItem('agua')),"posibilidad de encontrar":40},
+                    {"item":"madera","cantidad":(localStorage.getItem('madera')),"posibilidad de encontrar":50}
 ]
-document.getElementById('comida').innerHTML = recolectados[0].cantidad; //Actualiza cantidades en html de la 'Mochila'
+//Actualiza cantidades de la 'Mochila' en el DOM
+document.getElementById('comida').innerHTML = recolectados[0].cantidad; 
 document.getElementById('agua').innerHTML = recolectados[1].cantidad;          
 document.getElementById('madera').innerHTML = recolectados[2].cantidad;           
-
 //FUNCION cálculo posibilidad de encontrar objetos.
-const aleatorio = porcentaje =>  (Math.floor(Math.random()*100)<porcentaje);
+const aleatorio = numOrden =>  (Math.floor(Math.random()*100)<(recolectados[numOrden]["posibilidad de encontrar"]));
 //FUNCION derrota si un estado llega a cero.
 function derrota(estadoEnCero) {
     if (estadoEnCero<= 0) {
@@ -43,23 +53,21 @@ btnIncursion.onclick = () => {
     let comidaP; //Variables para los cálculos de Porcentaje.
     let aguaP;
     let maderaP;
-    if (comidaP = (aleatorio(recolectados[0]["posibilidad de encontrar"]))) { //Si el valor de 'aleatorio' supera el valor de 'posibilidad de encontrar' lo suma a 'Incursión' y suma en 1 el item en la 'mochila'.            
+    if (comidaP = (aleatorio(0))) { //Si el valor de 'aleatorio' supera el valor de 'posibilidad de encontrar' lo suma a 'Incursión' y suma en 1 el item en la 'mochila'.            
         incursion.push("Comida")
         recolectados[0].cantidad ++
+        localStorage.setItem('comida',recolectados[0].cantidad);
         document.getElementById('comida').innerHTML = recolectados[0].cantidad
-        localStorage.setItem('Comida',recolectados[0].cantidad);
-
-    }if (aguaP = (aleatorio(recolectados[1]["posibilidad de encontrar"]))) {                
+    }if (aguaP = (aleatorio(1))) {                
         incursion.push("Agua")
         recolectados[1].cantidad ++
+        localStorage.setItem('agua',recolectados[1].cantidad);
         document.getElementById('agua').innerHTML = recolectados[1].cantidad
-        localStorage.setItem('Comida',recolectados[1].cantidad);
-
-    }if (maderaP = (aleatorio(recolectados[2]["posibilidad de encontrar"]))) {                
+    }if (maderaP = (aleatorio(2))) {      
         incursion.push("Madera")
         recolectados[2].cantidad ++
+        localStorage.setItem('madera',recolectados[2].cantidad);
         document.getElementById('madera').innerHTML = recolectados[2].cantidad
-        localStorage.setItem('Comida',recolectados[2].cantidad);
     }
     Swal.fire({
         html:"Tras varias horas de búsqueda vuelves al refugio con el siguiente botín: <br>" + incursion, 
@@ -71,18 +79,22 @@ btnIncursion.onclick = () => {
             confirmButton:"swal-confirm"
         }
     })
-    incursion.pop()
-    estado.energia -= 20
-    estado.hambre -= 15
-    estado.sed -= 10
-    estado.frio -= 20
+    incursion.pop();
+    estado.energia -= 20;
+    estado.hambre -= 15;
+    estado.sed -= 10;
+    estado.frio -= 20;
+    localStorage.setItem('hambre',estado.hambre);
+    localStorage.setItem('frio',estado.frio);
+    localStorage.setItem('energia',estado.energia);
+    localStorage.setItem('sed',estado.sed);
     document.getElementById('hambre').innerHTML = estado.hambre; //Actualiza valores de estados en html.
     document.getElementById('sed').innerHTML = estado.sed;
     document.getElementById('frio').innerHTML = estado.frio;
     document.getElementById('energia').innerHTML = estado.energia;
     derrota(estado.hambre);
     derrota(estado.sed);
-    derrota(estado.frio)
+    derrota(estado.frio);
 };
 
 //ACCIONES 
@@ -119,7 +131,8 @@ btnComer.onclick = () => {
                         confirmButton:"swal-confirm"
                     }
                 })
-                document.getElementById('hambre').innerHTML = estado.hambre;            
+                document.getElementById('hambre').innerHTML = estado.hambre
+                localStorage.setItem('hambre',estado.hambre);            
             }else Swal.fire({ //SWAL si confirma pero no tiene comida en la mochila.
                 html:"No tienes nada para comer.",
                 color:"#daa520",
@@ -166,7 +179,8 @@ btnBeber.onclick = () => {
                         confirmButton:"swal-confirm"
                     }
                 })               
-                document.getElementById('sed').innerHTML = estado.sed;            
+                document.getElementById('sed').innerHTML = estado.sed
+                localStorage.setItem('sed',estado.sed);                            
             }else Swal.fire({
                 html:"No tienes nada para beber.",
                 color:"#daa520",
@@ -213,7 +227,8 @@ btnFuego.onclick = () => {
                         confirmButton:"swal-confirm"
                     }
                 })               
-                document.getElementById('frio').innerHTML = estado.frio;            
+                document.getElementById('frio').innerHTML = estado.frio
+                localStorage.setItem('frio',estado.frio);            
             }else Swal.fire({
                 html:"No tienes madera para alimentar el fuego.",
                 color:"#daa520",
@@ -247,6 +262,10 @@ btnDormir.onclick = () => {
             estado.hambre -= 20;
             estado.sed -= 15;
             estado.frio-= 25;
+            localStorage.setItem('hambre',estado.hambre);
+            localStorage.setItem('sed',estado.sed);
+            localStorage.setItem('frio',estado.frio);
+            localStorage.setItem('energia',estado.energia);        
             document.getElementById('hambre').innerHTML = estado.hambre;
             document.getElementById('sed').innerHTML = estado.sed;
             document.getElementById('frio').innerHTML = estado.frio;
@@ -283,45 +302,38 @@ btnReiniciar.onclick = () => {
     recolectados[0].cantidad=2;
     recolectados[1].cantidad=1;
     recolectados[2].cantidad=1;
-    localStorage.setItem('Comida',estado.hambre);
-    localStorage.setItem('Agua',estado.sed);
-    localStorage.setItem('Madera',estado.frio);
+    localStorage.setItem('comida',recolectados[0].cantidad);
+    localStorage.setItem('agua',recolectados[1].cantidad);
+    localStorage.setItem('madera',innerHTML = recolectados[2].cantidad);
     document.getElementById('comida').innerHTML = recolectados[0].cantidad
     document.getElementById('agua').innerHTML = recolectados[1].cantidad
     document.getElementById('madera').innerHTML = recolectados[2].cantidad
 };
 
+async function traducir () {
+    const url = 'https://text-translator2.p.rapidapi.com/translate';
+    const options = {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'X-RapidAPI-Key': '16591e9cecmsh9d0a2638bd27c26p10452fjsn48daf2cf0b43',
+            'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
+        },
+        body: new URLSearchParams({
+            source_language: 'es',
+            target_language: 'en',
+            text: 'simulador'
+        })
+    };
 
-
-// fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-// .then((resp)=> resp.json())
-// .then((data)=>{
-//     console.log(data.species.name)
-// })
-// Async function traduccion () {
-const url = 'https://text-translator2.p.rapidapi.com/translate';
-const options = {
-	method: 'POST',
-	headers: {
-		'content-type': 'application/x-www-form-urlencoded',
-		'X-RapidAPI-Key': '16591e9cecmsh9d0a2638bd27c26p10452fjsn48daf2cf0b43',
-		'X-RapidAPI-Host': 'text-translator2.p.rapidapi.com'
-	},
-	body: new URLSearchParams({
-		source_language: 'es',
-		target_language: 'en',
-		text: 'Hola Mundo'
-	})
-};
-
-try {
-	const response = fetch(url, options);
-	const result = response.text();
-	console.log(result);
-} catch (error) {
-	console.error(error);
-}
-// }
-
-console.log()
-// Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result)
+        // const p=document.createElement('p')
+        // p.innerHTML=`123asd`
+    } catch (error) {
+        console.error(error);
+    }
+    }
+console.log(traducir())
