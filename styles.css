@@ -5,7 +5,7 @@
 }
 html { /* etiqueta raíz */
     font-size: 62.5%;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
 
 }
 ul{
@@ -30,6 +30,7 @@ body{
     color: goldenrod;
     text-decoration: underline;
     cursor:pointer;
+    font-size: 1.5rem;
 }
 
     /* BANNER  */
@@ -46,7 +47,7 @@ body{
     color: goldenrod;
     font-family: 'Londrina Solid', sans-serif;
     -webkit-text-stroke: 0.65px #000000df;
-    font-size: 1.35rem;
+    font-size: 2.25rem;
 }
 .divisor1,.divisor2,.divisor3{
     height: 20px;
@@ -62,6 +63,7 @@ body{
     top: 150px;
     right: 25%;
     width: 50%;
+    scroll-snap-align: start;
 }
 .divisor3{
     position: relative;
@@ -84,16 +86,16 @@ body{
     -webkit-text-stroke: 1px #000000;
 }
 h1{
-    font-size: 4rem;
+    font-size: 6rem;
 }
 h2{
-    font-size: 2rem;
+    font-size: 4rem;
 }
 h3{
-    font-size: 1.75rem;
+    font-size: 3.75rem;
 }
 .p-intro{
-    font-size: 1.75rem;
+    font-size: 2.75rem;
     color: goldenrod;
     font-family: 'Londrina Solid', sans-serif;
     -webkit-text-stroke: 1px #000000;
@@ -110,14 +112,14 @@ h3{
 
 }
 .estadisticas p, h5, img {
-    font-size: 1.5rem;
+    font-size:2.5rem;
 }
 .iconos{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-inline: 1rem;
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 .offcanvas-header{
@@ -133,8 +135,8 @@ h3{
     background-position: center;
     background-size: 80%;
     background-color: rgba(69, 19, 19, 0.9)!important;
-    height: 5rem;
-    width: 5rem;
+    height: 8rem;
+    width: 8rem;
     z-index: 5;
     border: inset darkorange 4px;
 }
@@ -155,7 +157,7 @@ h3{
     border-left: inset darkorange 2px;
 }
 .mochila p {
-    font-size: 1.25rem;
+    font-size: 2rem;
 
 }
 /*BOTONES*/
@@ -170,6 +172,7 @@ h3{
     height: 4rem;
     width: 20%;
     padding: 2rem;
+    font-size: 1.7rem;
 }
 .btn:hover{
     border: inset darkorange 2.5px;
@@ -179,7 +182,9 @@ h3{
     justify-content: space-around;
 }
 #reiniciar{
-    width: 5%;
+    width: 10%;
+    height: auto;
+    padding: 0.5rem;
     background: radial-gradient(circle, rgba(66, 67, 71, 0.906) 50%, #fb80066c 100%);
     margin-bottom: 2rem;
 }
@@ -187,7 +192,6 @@ h3{
 /* SWEETALERT2 */
 .swal-container{
     background: radial-gradient(circle, rgba(69, 19, 19, 0.906) 1%, #050403 100%);
-    /* background: radial-gradient(circle, rgba(12, 16, 71, 0.906) 1%, #050403 100%); */
     border: inset goldenrod 3px;
 }
 .swal-titulo{
@@ -208,6 +212,10 @@ h3{
 .swal-deny:hover{
     color: red;
 }
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+    font-size:2rem
+}
 /*CARDS ACCIONES*/
 .d-flex{
     flex-wrap: wrap;
@@ -217,20 +225,6 @@ h3{
 .descripcion-acciones{
     margin: auto
 }
-/* .card{
-    background: radial-gradient(circle, rgba(27, 36, 160, 0.55) 1%, #050403 100%);
-    color: goldenrod;
-    border: inset darkorange 2px;
-    text-align: center;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    width: 250px;
-    height: 225px;
-} */
-/* .card.h5{
-    font-weight: 400;
-} */
 .texto-rojo{
     color: rgb(157, 21, 21);
     display: block;
@@ -239,10 +233,6 @@ h3{
     color: greenyellow;
     display: block;
 } 
-/* .card-body{
-    position: absolute;
-} */
-
 /* RESPONSIVE */
 @media (max-width: 576px){
     .mochila p, h5, img{
